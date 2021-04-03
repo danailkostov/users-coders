@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
+import Info from "../../components/Info";
 
-const index = () => {
-    return (
-        <>
-            {/* <Navbar /> */}
-            {/* <Search /> */}
-            {/* <Info /> */}
-            {/* <User /> */}
-            {/* <Repos /> */}
-        </>
-    )
-}
+const Home = () => {
+  return (
+    <>
+      {/* <Navbar /> */}
+      {/* <Search /> */}
+      <Info />
+      {/* <User /> */}
+      {/* <Repos /> */}
+    </>
+  );
+};
 
-export default index
+export default Home;
