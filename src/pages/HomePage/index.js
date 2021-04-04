@@ -1,5 +1,6 @@
 import React from "react";
 import Info from "../../components/Info";
+import User from "../../components/User";
 
 const Home = () => {
   return (
@@ -7,7 +8,7 @@ const Home = () => {
       {/* <Navbar /> */}
       {/* <Search /> */}
       <Info />
-      {/* <User /> */}
+      <User />
       {/* <Repos /> */}
     </>
   );
