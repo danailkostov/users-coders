@@ -6,6 +6,7 @@ import {
   Avatar,
   Button,
   CardContent,
+  Link,
 } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   label: {
     padding: "10px",
+    color: "#617d98",
+    fontWeight: "bold",
   },
   paperTwo: {
     borderTopLeftRadius: "0px",
@@ -32,8 +35,15 @@ const useStyles = makeStyles((theme) => ({
     height: "75px",
   },
   btn: {
-    borderRadius: "15px",
+    textTransform: "none",
+    borderRadius: "25px",
     margin: "30px",
+    color: "#617D98",
+    border: "1px solid #617D98",
+    "&:hover": {
+      backgroundColor: "#2CAEBA",
+      color: "white",
+    },
   },
   name: {
     color: "#102a42",
@@ -46,8 +56,15 @@ const useStyles = makeStyles((theme) => ({
     color: "#617D98",
   },
   icons: {
-    verticalAlign: "middle",
+    verticalAlign: "top",
     display: "inline-flex",
+    marginRight: "5px",
+  },
+  link: {
+    color: "#2CAEBA",
+    "&:hover": {
+      color: "#551A8B",
+    },
   },
 }));
 
@@ -96,7 +113,7 @@ const UserDetails = ({
 
         <CardContent>
           <Typography
-            variant="body2"
+            variant="body1"
             color="textSecondary"
             component="p"
             gutterBottom
@@ -105,7 +122,7 @@ const UserDetails = ({
             {bio}
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             color="textSecondary"
             component="p"
             className={classes.minorTypos}
@@ -115,7 +132,7 @@ const UserDetails = ({
             {company}
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             color="textSecondary"
             component="p"
             className={classes.minorTypos}
@@ -125,12 +142,18 @@ const UserDetails = ({
             {location}
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             color="textSecondary"
             component="p"
             className={classes.minorTypos}
           >
-            <LinkIcon fontSize="small" className={classes.icons} /> {blog}
+            <Link
+              href={`https://${blog}`}
+              className={classes.link}
+              underline="none"
+            >
+              <LinkIcon fontSize="small" className={classes.icons} /> {blog}
+            </Link>
           </Typography>
         </CardContent>
       </Card>

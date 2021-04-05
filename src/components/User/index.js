@@ -12,8 +12,8 @@ const User = () => {
         <Grid item xs={12} lg={6}>
           <UserDetails {...user} />
         </Grid>
-        <Grid item xs={6}>
-          <UserFollowers />
+        <Grid item xs={12} lg={6}>
+          <UserFollowers followers={followers} />
         </Grid>
       </Grid>
     </Container>
