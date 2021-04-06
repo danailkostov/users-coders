@@ -16,16 +16,30 @@ const Repos = () => {
     total[language].value++;
     return total;
   }, {});
-  const convertLanguagesToArray = Object.values(languages);
+  const usedLanguages = Object.values(languages);
+
+  const sortedRepos = repos
+    .sort((a, b) => b.stargazers_count - a.stargazers_count)
+    .slice(0, 5)
+    .reduce((total, item) => {
+      const { name, stargazers_count } = item;
+      if (!name) return total;
+      if (!total[name]) {
+        total[name] = { label: name, value: stargazers_count };
+      }
+      return total;
+    }, {});
+
+  const popularRepos = Object.values(sortedRepos);
 
   return (
     <Container>
       <Grid container spacing={4} style={{ margin: "50px 0px" }}>
         <Grid item xs={6}>
-          <Languages data={convertLanguagesToArray} />
+          <Languages data={usedLanguages} />
         </Grid>
         <Grid item xs={6}>
-          <Popular />
+          <Popular data={popularRepos} />
         </Grid>
         <Grid item xs={6}>
           <Stars />
