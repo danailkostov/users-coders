@@ -50,16 +50,16 @@ const Repos = () => {
   return (
     <Container>
       <Grid container spacing={4} style={{ margin: "50px 0px" }}>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
           <Languages data={usedLanguages} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <Popular data={popularRepos} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
           <Stars data={stars} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <Forked data={forks} />
         </Grid>
       </Grid>
