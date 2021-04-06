@@ -8,29 +8,44 @@ import { AppContext } from "../../context/context";
 const Repos = () => {
   const { repos } = useContext(AppContext);
   const languages = repos.reduce((total, item) => {
-    const { language } = item;
+    const { language, stargazers_count } = item;
     if (!language) return total;
     if (!total[language]) {
-      total[language] = { label: language, value: 1 };
+      total[language] = { label: language, value: 1, stars: 0 };
     }
     total[language].value++;
+    total[language].stars += stargazers_count;
     return total;
   }, {});
   const usedLanguages = Object.values(languages);
 
   const sortedRepos = repos
     .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    .slice(0, 5)
     .reduce((total, item) => {
-      const { name, stargazers_count } = item;
+      const { name, stargazers_count, forks } = item;
       if (!name) return total;
       if (!total[name]) {
-        total[name] = { label: name, value: stargazers_count };
+        total[name] = { label: name, value: stargazers_count, forks: forks };
       }
       return total;
     }, {});
 
-  const popularRepos = Object.values(sortedRepos);
+  const popularRepos = Object.values(sortedRepos).slice(0, 5);
+
+  const stars = usedLanguages
+    .map((item) => {
+      const { label, stars } = item;
+      return { label: label, value: stars };
+    })
+    .sort((a, b) => b.value - a.value);
+
+  const forks = Object.values(sortedRepos)
+    .map((item) => {
+      const { label, forks } = item;
+      return { label: label, value: forks };
+    })
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5);
 
   return (
     <Container>
@@ -42,10 +57,10 @@ const Repos = () => {
           <Popular data={popularRepos} />
         </Grid>
         <Grid item xs={6}>
-          <Stars />
+          <Stars data={stars} />
         </Grid>
         <Grid item xs={6}>
-          <Forked />
+          <Forked data={forks} />
         </Grid>
       </Grid>
     </Container>

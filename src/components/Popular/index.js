@@ -65,7 +65,7 @@ const Popular = ({data}) => {
         xAxisName: "Repos",
         yAxisName: "stars",
         theme: "zune",
-        palettecolors: "5d62b5,29c3be,f2726f",
+        palettecolors: "2CAEBA,5D62B5,FFC533,F2726F,8D6E63",
         // showValues: "1",
         rotateValues: "0",
         // placeValuesInside: "0",
