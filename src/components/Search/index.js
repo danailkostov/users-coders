@@ -10,6 +10,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppContext } from "../../context/context";
+import Error from "../Error";
 
 const useStyles = makeStyles((theme) => ({
   searchIcon: {
@@ -50,6 +51,7 @@ const Search = () => {
   };
   return (
     <Container>
+      {rateLimit > 0 && <Error />}
       <Grid container alignItems="center" spacing="2">
         <Grid item xs={12} sm={7}>
           <form onSubmit={handleSubmit} style={{ width: "100%" }}>
