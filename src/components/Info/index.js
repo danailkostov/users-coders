@@ -45,7 +45,7 @@ const Info = () => {
     <Container>
       <Grid container spacing={4} className={classes.grid}>
         {items.map((item) => (
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <InfoItem {...item} />
           </Grid>
         ))}
