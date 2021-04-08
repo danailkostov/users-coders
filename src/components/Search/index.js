@@ -42,16 +42,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Search = () => {
-  const { rateLimit } = useContext(AppContext);
+  const { rateLimit, setSearchValue } = useContext(AppContext);
   const classes = useStyles();
   const [search, setSearch] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search);
+    setSearchValue(search);
   };
   return (
     <Container>
-      {rateLimit > 0 && <Error />}
+      {/* add logic for if we don't find github user */}
+      {rateLimit === 0 && <Error />}
       <Grid container alignItems="center" spacing="2">
         <Grid item xs={12} sm={7}>
           <form onSubmit={handleSubmit} style={{ width: "100%" }}>

@@ -106,7 +106,7 @@ const UserDetails = ({
           }
           subheader={
             <Typography className={classes.twitter} component="p">
-              @{twitter_username}
+              @{twitter_username ? twitter_username : "no twitter"}
             </Typography>
           }
         />

@@ -47,6 +47,8 @@ const Repos = () => {
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
 
+    console.log(forks);
+
   return (
     <Container>
       <Grid container spacing={4} style={{ margin: "50px 0px" }}>
