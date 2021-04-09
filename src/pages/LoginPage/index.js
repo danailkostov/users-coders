@@ -2,6 +2,7 @@ import { Button, Container, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import LoginImg from "../../images/login-img.svg";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
   const classes = useStyles();
+  const { loginWithRedirect } = useAuth0();
   return (
     <Grid container className={classes.container} component="section">
       <Container maxWidth="sm">
@@ -38,7 +40,12 @@ const Login = () => {
         >
           Github User
         </Typography>
-        <Button variant="contained" size="small" className={classes.btn}>
+        <Button
+          variant="contained"
+          size="small"
+          className={classes.btn}
+          onClick={() => loginWithRedirect()}
+        >
           log in / sign up
         </Button>
       </Container>

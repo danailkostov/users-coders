@@ -1,15 +1,25 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ErrorPage from "./pages/ErrorPage";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const { isAuthenticated, isLoading } = useAuth0();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <Router>
       <Switch>
         <Route path="/" exact={true}>
-          <HomePage />
+          {isAuthenticated ? <HomePage /> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
           <LoginPage />

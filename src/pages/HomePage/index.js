@@ -3,6 +3,7 @@ import Info from "../../components/Info";
 import User from "../../components/User";
 import Repos from "../../components/Repos";
 import Search from "../../components/Search";
+import Navbar from "../../components/Navbar";
 import { AppContext } from "../../context/context";
 import { CircularProgress, Typography } from "@material-ui/core";
 
@@ -12,6 +13,7 @@ const Home = () => {
   if (loading) {
     return (
       <main>
+        <Navbar />
         <Search />
         <Typography align="center" style={{ marginTop: "50px" }}>
           <CircularProgress size={200} />
@@ -22,7 +24,7 @@ const Home = () => {
 
   return (
     <main>
-      {/* <Navbar /> */}
+      <Navbar />
       <Search />
       <Info />
       <User />

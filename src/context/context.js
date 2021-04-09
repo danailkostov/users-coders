@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import mockUser from "../context/mockData.js/mockUser";
+import mockRepos from "../context/mockData.js/mockRepos";
+import mockFollowers from "../context/mockData.js/mockFollowers";
 // Endpoints //
 const mainUrl = "https://api.github.com/";
 const rateAPIEnd = `${mainUrl}rate_limit`;
@@ -10,13 +13,12 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   // States
   const [loading, setLoading] = useState(true);
-  const [followers, setFollowers] = useState({});
-  const [user, setUser] = useState({});
-  const [repos, setRepos] = useState({});
+  const [followers, setFollowers] = useState(mockFollowers);
+  const [user, setUser] = useState(mockUser);
+  const [repos, setRepos] = useState(mockRepos);
   const [rateLimit, setRateLimit] = useState(0);
   const [searchValue, setSearchValue] = useState("john-smilga");
   const [error, setError] = useState({ show: "", msg: "" });
-
   // fetchFunctions
   const fetchUser = async (user) => {
     try {
@@ -85,8 +87,8 @@ const AppProvider = ({ children }) => {
       setError((state) => {
         return { ...state, show: "", msg: "" };
       });
-      await fetchRateLimit();
       await fetchUser(searchValue);
+      await fetchRateLimit();
       await fetchFollowers(searchValue);
       await fetchRepos(searchValue);
       setLoading(false);
